@@ -75,11 +75,11 @@ public class MainView implements ViewMaker {
 		monster1.setLayoutX(400);
 		monster1.setLayoutY(320);
 		root.getChildren().addAll(monster1);
-		scene = new Scene(root, 800, 460);
+		scene = new Scene(root, 770, 458);
 
 		root.getStyleClass().add("main-class");
 
-		scene.getStylesheets().add(getClass().getResource("mainClass.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/mainClass.css").toExternalForm());
 
 		// HIER BUTTON LISTENER ? Oder neue klasse?public class ?
 		m1.setOnMousePressed(event -> {

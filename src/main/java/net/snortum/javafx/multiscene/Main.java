@@ -3,10 +3,10 @@ package net.snortum.javafx.multiscene;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.lexuna.monster_fighter.model.Player;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import net.snortum.javafx.multiscene.model.Player;
 import net.snortum.javafx.multiscene.model.SceneName;
 import net.snortum.javafx.multiscene.view.MainView;
 import net.snortum.javafx.multiscene.view.ViewMaker;
@@ -23,9 +23,9 @@ public class Main extends Application {
 	private static Player character;
 
 	static {
-		graphics.put(1, new Image(MainView.class.getResourceAsStream("idle.gif")));
-		graphics.put(2, new Image(MainView.class.getResourceAsStream("monster2.gif")));
-		graphics.put(3, new Image(MainView.class.getResourceAsStream("monster5.gif")));
+		graphics.put(1, new Image(MainView.class.getResourceAsStream("/idle.gif")));
+		graphics.put(2, new Image(MainView.class.getResourceAsStream("/monster2.gif")));
+		graphics.put(3, new Image(MainView.class.getResourceAsStream("/monster5.gif")));
 	}
 
 	public static void main(String[] args) {

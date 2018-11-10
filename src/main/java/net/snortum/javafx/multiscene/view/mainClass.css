@@ -1,0 +1,14 @@
+/**
+ * file: mainClass.css
+ *   Place in same directory as MainClass.java.
+ *   Have your build system copy this file to your build output directory.
+ **/
+
+.main-class {
+  -fx-background-image: url('https://i.imgur.com/aqxg1p7.png');
+  -fx-background-repeat: stretch;   
+  -fx-background-size: 409 100;
+  -fx-background-position: center center;
+  -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+  -fx-background-insets: 30;
+}

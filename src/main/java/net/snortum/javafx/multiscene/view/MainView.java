@@ -13,7 +13,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import net.snortum.javafx.multiscene.Main;
-import net.snortum.javafx.multiscene.controller.MainController;
 import net.snortum.javafx.multiscene.controller.ViewController;
 
 /**
@@ -27,7 +26,7 @@ public class MainView implements ViewMaker {
 	/** Must inject a stage */
 	public MainView(Stage stage) {
 		// Inject stage from Main into controller
-		MainController controller = new MainController(stage);
+		ViewController controller = new ViewController(stage);
 
 		// Monster select
 		Button m1 = new Button("Monster 1");
@@ -62,7 +61,7 @@ public class MainView implements ViewMaker {
 		BorderPane root = new BorderPane();
 		root.setLeft(vbox);
 		root.setCenter(hbox);
-		Label label = new Label("         MAIN SCENE                     Wähle Monster");
+		Label label = new Label("             Hauptmenü                    Wähle Monster");
 		label.setFont(new Font(32));
 		root.setTop(label); // Label Wähle Monster
 

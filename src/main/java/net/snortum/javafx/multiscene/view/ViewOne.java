@@ -3,9 +3,7 @@ package net.snortum.javafx.multiscene.view;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -30,10 +28,12 @@ public class ViewOne implements ViewMaker {
 	private Scene scene;
 	private Button monster;
 	private Button enemy;
+	private HealthBar enemyBar;
+	private HealthBar healthBar;
+	private Label levelLabel;
 
 	/** Must inject a stage */
 	public ViewOne(Stage stage) {
-
 		BorderPane root = new BorderPane();
 		root.setPadding(new Insets(10));
 
@@ -47,7 +47,7 @@ public class ViewOne implements ViewMaker {
 		monster.setLayoutY(320);
 		root.getChildren().addAll(monster);
 
-		enemy = new Button("", new ImageView(Main.getGraphics().get(Main.getPlayer().getGraficID()+1)));
+		enemy = new Button();
 		enemy.setLayoutX(590);
 		enemy.setLayoutY(190);
 		root.getChildren().addAll(enemy);
@@ -55,21 +55,27 @@ public class ViewOne implements ViewMaker {
 		HBox hBox = new HBox();
 		hBox.setSpacing(10);
 
-		ProgressBar healthBar = new ProgressBar();
-		healthBar.setProgress(100);
-		healthBar.setStyle("-fx-accent: green;");
+		healthBar = new HealthBar();
+		healthBar.setValue(Main.getPlayer().getHealth(), Main.getPlayer().getMaxHealth());
+
+		enemyBar = new HealthBar();
+		enemyBar.setValue(100, 100);
+		enemyBar.getProgressBar().setLayoutX(450);
+		enemyBar.getProgressBar().setLayoutY(150);
 
 		Button attack = new Button("Attack");
 		attack.setOnAction(e -> FightController.onAttack(e));
+		levelLabel = new Label();
 
 		VBox vBox = new VBox();
-		VBox.setMargin(attack, new Insets(50, 20, 20, 25));
-		vBox.getChildren().addAll(healthBar, attack);
+		VBox.setMargin(attack, new Insets(20, 0, 0, 25));
+		vBox.getChildren().addAll(levelLabel, healthBar.getProgressBar(), attack);
 
-		HBox.setMargin(vBox, new Insets(300, 20, 20, 250));
-		hBox.getChildren().addAll(vBox);
+//		HBox.setMargin(vBox, new Insets(300, 20, 20, 250));
+		hBox.getChildren().addAll(vBox, enemyBar.getProgressBar());
+		HBox.setMargin(vBox, new Insets(340, 0, 0, 250));
+		HBox.setMargin(enemyBar.getProgressBar(), new Insets(100, 0, 0, 0));
 
-		// Kann ich hier in der View elemente hinzufügen?
 		playerName = new Label();
 //		root.setLeft(playerName);
 
@@ -89,5 +95,21 @@ public class ViewOne implements ViewMaker {
 
 	public Label getPlayerNameLabel() {
 		return this.playerName;
+	}
+
+	public Button getEnemy() {
+		return enemy;
+	}
+
+	public HealthBar getEnemyBar() {
+		return enemyBar;
+	}
+
+	public HealthBar getPlayerBar() {
+		return healthBar;
+	}
+
+	public Label getPlayerLevelLabel() {
+		return levelLabel;
 	}
 }

@@ -85,23 +85,18 @@ public class MainView implements ViewMaker {
 		m1.setOnMousePressed(event -> {
 			Image img = Main.getGraphics().get(1);
 			monster1.setGraphic(new ImageView(img));
-			// Main.setPlayer(new Player("Name", img));
 			ViewController.chooseMonster(1);
 		});
 
 		m2.setOnMousePressed(event -> {
 			Image img = Main.getGraphics().get(2);
 			monster1.setGraphic(new ImageView(img));
-			// TODO:Replace monster with selection
-			// ViewController.chooseMonsterTwo();
 			ViewController.chooseMonster(2);
 		});
 
 		m3.setOnMousePressed(event -> {
 			Image img = Main.getGraphics().get(3);
 			monster1.setGraphic(new ImageView(img));
-			// TODO:Replace monster with selection
-			// ViewController.chooseMonsterTwo();
 			ViewController.chooseMonster(3);
 		});
 

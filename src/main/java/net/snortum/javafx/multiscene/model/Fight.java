@@ -1,5 +1,7 @@
 package net.snortum.javafx.multiscene.model;
 
+import net.snortum.javafx.multiscene.Main;
+
 /**
  * @author hannahn
  * @version 1.0
@@ -11,7 +13,7 @@ public class Fight {
 	private Enemy enemy;
 
 	public Fight() {
-//		this.player = Main.getPlayer();
+		this.player = Main.getPlayer();
 		this.enemy = new Enemy();
 	}
 

@@ -1,6 +1,5 @@
 package net.snortum.javafx.multiscene.controller;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -32,6 +31,7 @@ public class ViewController {
 		Button monster = view.getMonster();
 		monster.setGraphic(new ImageView(Main.getGraphics().get(Main.getPlayer().getGraficID())));
 		stage.setScene(view.getScene());
+		view.getPlayerLevelLabel().setText(Main.getPlayer().getLevel() + "");
 		FightController.startNewFight();
 	}
 

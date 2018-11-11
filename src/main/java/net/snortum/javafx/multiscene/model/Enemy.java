@@ -13,6 +13,7 @@ public class Enemy {
 
 	private static final String[] NAMES = { "Enemy 1", "Enemy 2" };
 	private String name;
+	private int graficId;
 	private int health; // default 25
 	private int maxHealth; // default 25
 	private int maxDmg; // default 10
@@ -23,6 +24,7 @@ public class Enemy {
 	public Enemy() {
 		int playerLevel = (int) Main.getPlayer().getLevel();
 		Random rand = new Random();
+		graficId = rand.nextInt(2) + 1;
 		int randMod = rand.nextInt(playerLevel) + (playerLevel - 5);
 		this.name = NAMES[rand.nextInt(1)];
 		this.maxHealth = 25;
@@ -30,11 +32,12 @@ public class Enemy {
 		this.minDmg = 5;
 		this.xp = 15;
 
+		randMod /= 2;
 		if (randMod > 0) {
 			this.maxHealth *= randMod;
 			this.maxDmg *= randMod;
 			this.minDmg *= randMod;
-			this.xp *= randMod;
+			this.xp *= randMod / 5;
 		}
 		this.health = maxHealth;
 	}
@@ -89,6 +92,14 @@ public class Enemy {
 
 	public int getMaxDmg() {
 		return maxDmg;
+	}
+
+	public int getGraficID() {
+		return graficId;
+	}
+
+	public int getMaxHealth() {
+		return maxHealth;
 	}
 
 }

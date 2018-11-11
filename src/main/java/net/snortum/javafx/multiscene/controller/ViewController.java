@@ -1,5 +1,10 @@
 package net.snortum.javafx.multiscene.controller;
 
+import java.util.concurrent.CountDownLatch;
+
+import javafx.application.Platform;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -37,5 +42,19 @@ public class ViewController {
 
 	public static void chooseMonster(int x) {
 		Main.getPlayer().setGraficID(x);
+	}
+
+	public static void showPlayerDmg(int dmg) {
+
+		ViewOne view = (ViewOne) Main.getScenes().get(SceneName.SCENE1);
+		Label label = view.getPlayerDmg();
+		label.setText(dmg + "");
+	}
+
+	public static void showEnemyDmg(int dmg) {
+
+		ViewOne view = (ViewOne) Main.getScenes().get(SceneName.SCENE1);
+		Label label = view.getEnemyDmg();
+		label.setText(dmg + "");
 	}
 }

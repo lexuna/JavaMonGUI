@@ -4,10 +4,10 @@ import javafx.scene.control.ProgressBar;
 
 public class HealthBar {
 
-	private static final String GREEN = "-fx-accent: green; ";
-	private static final String RED = "-fx-accent: red; ";
-	private static final String ORANGE = "-fx-accent: orange; ";
-	private static final String YELLOW = "-fx-accent: yellow; ";
+	private static final String GREEN = "-fx-accent: green;";
+	private static final String RED = "-fx-accent: red;";
+	private static final String ORANGE = "-fx-accent: orange;";
+	private static final String YELLOW = "-fx-accent: yellow;";
 
 	private ProgressBar pBar;
 

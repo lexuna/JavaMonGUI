@@ -24,7 +24,7 @@ public class Enemy {
 	public Enemy() {
 		int playerLevel = (int) Main.getPlayer().getLevel();
 		Random rand = new Random();
-		graficId = rand.nextInt(2) + 1;
+		graficId = rand.nextInt(3) + 1;
 		int randMod = rand.nextInt(playerLevel) + (playerLevel - 5);
 		this.name = NAMES[rand.nextInt(1)];
 		this.maxHealth = 25;

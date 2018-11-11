@@ -20,6 +20,7 @@ import net.snortum.javafx.multiscene.view.ViewOne;
 public class FightController {
 
 	private static Fight activeFight;
+	private static boolean dead;
 
 	public FightController() {
 
@@ -43,28 +44,32 @@ public class FightController {
 	}
 
 	public static void onAttack(ActionEvent e) {
-		ViewOne view = (ViewOne) Main.getScenes().get(SceneName.SCENE1);
-		try {
-			FightController.getActiveFight().playerAttack(null);
-			view.getEnemyBar().setValue(activeFight.getEnemy().getHealth(), activeFight.getEnemy().getMaxHealth());
-			FightController.getActiveFight().enemyAttack(null);
-			view.getPlayerBar().setValue(Main.getPlayer().getHealth(), Main.getPlayer().getMaxHealth());
-		} catch (NoSkillImplemented e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (EnemyIsDead e1) {
-			// TODO Auto-generated catch block
-			startNewFight();
-			System.out.println("Enemy is dead");
-		} catch (LevelUp e1) {
-			// TODO Auto-generated catch block
-			startNewFight();
-			view.getPlayerLevelLabel().setText(Main.getPlayer().getLevel() + "");
-			System.out.println("Enemy is dead");
-			System.out.println("Level up");
-		} catch (PlayerIsDead e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if (!dead) {
+			ViewOne view = (ViewOne) Main.getScenes().get(SceneName.SCENE1);
+			try {
+				int playerDmg = FightController.getActiveFight().playerAttack(null);
+				ViewController.showPlayerDmg(playerDmg);
+				view.getEnemyBar().setValue(activeFight.getEnemy().getHealth(), activeFight.getEnemy().getMaxHealth());
+				int enemyDmg = FightController.getActiveFight().enemyAttack(null);
+				view.getPlayerBar().setValue(Main.getPlayer().getHealth(), Main.getPlayer().getMaxHealth());
+				ViewController.showEnemyDmg(enemyDmg);
+			} catch (NoSkillImplemented e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (EnemyIsDead e1) {
+				// TODO Auto-generated catch block
+				startNewFight();
+				System.out.println("Enemy is dead");
+			} catch (LevelUp e1) {
+				// TODO Auto-generated catch block
+				startNewFight();
+				view.getPlayerLevelLabel().setText(Main.getPlayer().getLevel() + "");
+				System.out.println("Enemy is dead");
+				System.out.println("Level up");
+			} catch (PlayerIsDead e1) {
+				view.getDead().setText("Game Over!");
+				dead = true;
+			}
 		}
 	}
 

@@ -1,10 +1,5 @@
 package net.snortum.javafx.multiscene.controller;
 
-import java.util.concurrent.CountDownLatch;
-
-import javafx.application.Platform;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -15,19 +10,22 @@ import net.snortum.javafx.multiscene.model.SceneName;
 import net.snortum.javafx.multiscene.view.ViewOne;
 
 /**
- * Pressing a button displays the different scenes.
+ * This class is a controller for the view. it contains all ActionHandler.
  * 
  */
 public class ViewController {
 
 	private Stage stage;
 
-	/** Inject the stage from {@link Main} */
 	public ViewController(Stage stage) {
 		this.stage = stage;
 	}
 
-	/** Display the first scene */
+	/**
+	 * This method is the ActionHandler for the play button;
+	 * 
+	 * @param event
+	 */
 	public void handleOnPressButton1(MouseEvent event) {
 		ViewOne view = (ViewOne) Main.getScenes().get(SceneName.SCENE1);
 		Label label = view.getPlayerNameLabel();
@@ -40,6 +38,11 @@ public class ViewController {
 		FightController.startNewFight();
 	}
 
+	/**
+	 * ActionHandler for the monster button;
+	 * 
+	 * @param x
+	 */
 	public static void chooseMonster(int x) {
 		Main.getPlayer().setGraficID(x);
 	}

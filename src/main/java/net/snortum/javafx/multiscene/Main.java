@@ -13,13 +13,23 @@ import net.snortum.javafx.multiscene.view.ViewMaker;
 import net.snortum.javafx.multiscene.view.ViewOne;
 
 /**
- * Builds all scenes and display the main one.
+ * This class has the main method, values for the character, the graphics and
+ * the scene.
  */
 public class Main extends Application {
 
-	/** Holds the various scenes to switch between */
+	/**
+	 * this map saves all used scenes. the key is scene name as enum type
+	 * ({@link SceneName}].
+	 */
 	private static Map<SceneName, ViewMaker> scenes = new HashMap<>();
+	/**
+	 * this map saves all graphics for the player and enemies.
+	 */
 	private static Map<Integer, Image> graphics = new HashMap<>();
+	/**
+	 * the use player character
+	 */
 	private static Player character;
 
 	static {
@@ -33,6 +43,11 @@ public class Main extends Application {
 		launch(args);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see javafx.application.Application#start(javafx.stage.Stage)
+	 */
 	@Override
 	public void start(Stage stage) {
 
@@ -46,7 +61,6 @@ public class Main extends Application {
 		stage.show();
 	}
 
-	/** Returns a Map of the scenes by {@link SceneName} */
 	public static Map<SceneName, ViewMaker> getScenes() {
 		return scenes;
 	}

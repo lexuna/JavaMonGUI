@@ -13,6 +13,8 @@ import net.snortum.javafx.multiscene.model.SceneName;
 import net.snortum.javafx.multiscene.view.ViewOne;
 
 /**
+ * THis class is the controller for a fight.
+ * 
  * @author hannahn
  * @version 1.0
  * @created 30-Okt-2018 08:51:37

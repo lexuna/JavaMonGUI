@@ -59,13 +59,10 @@ public class FightController {
 			} catch (EnemyIsDead e1) {
 				// TODO Auto-generated catch block
 				startNewFight();
-				System.out.println("Enemy is dead");
 			} catch (LevelUp e1) {
 				// TODO Auto-generated catch block
 				startNewFight();
 				view.getPlayerLevelLabel().setText(Main.getPlayer().getLevel() + "");
-				System.out.println("Enemy is dead");
-				System.out.println("Level up");
 			} catch (PlayerIsDead e1) {
 				view.getDead().setText("Game Over!");
 				dead = true;
